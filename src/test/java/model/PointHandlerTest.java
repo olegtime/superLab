@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
 class PointHandlerTest {
     private final PointHandler pointHandler = new PointHandler();
 
@@ -40,17 +39,17 @@ class PointHandlerTest {
 
     @Test
     void getHitInfoWithHitToRectangle() {
-        assertTrue(pointHandler.getHitInfo(pointData(-1, 1, 3, -60)).isHit());
+        assertTrue(pointHandler.getHitInfo(pointData(-1, -1, 3, -60)).isHit());
     }
 
-   @Test
+    @Test
     void getHitInfoWithHitToCircle() {
-       assertTrue(pointHandler.getHitInfo(pointData(1, 1, 3, -60)).isHit());
+        assertTrue(pointHandler.getHitInfo(pointData(1, 1, 3, -60)).isHit());
     }
 
     @Test
     void getHitInfoWithHitToTriangle() {
-        assertTrue(pointHandler.getHitInfo(pointData(1, -1, 2, -60)).isHit());
+        assertTrue(pointHandler.getHitInfo(pointData(1, -1, 4, -60)).isHit());
     }
 
     @Test
@@ -60,7 +59,7 @@ class PointHandlerTest {
 
     @Test
     void getHitInfoWithMiss() {
-        Hit hit = pointHandler.getHitInfo(pointData(-1, -1, 3, -60));
+        Hit hit = pointHandler.getHitInfo(pointData(-1, 1, 1, -60));
 
         assertFalse(hit.isHit());
     }
